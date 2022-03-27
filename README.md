@@ -59,6 +59,9 @@ result: 0.266 x + 3608
 
 ## Method 2 - Sequence-to-Sequence (Seq2Seq)
 
+### Framework
+<img src="./Seq2Seq_framework.png" alt="Cover" width="50%"/>
+
 ### Data analysis
 
 ### Data pre-processing
