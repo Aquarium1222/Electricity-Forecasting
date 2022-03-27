@@ -71,11 +71,10 @@ for poly in range(0, 15):
     for x in range(633, 791):
         RMSE += pow(p(x) - test_data[x - 633], 2)
 
-    RMSE = pow(diff, 0.5)
+    RMSE = RMSE / len(train_data)
+    RMSE = pow(RMSE, 0.5)
 
     if RMSE < min:
-        min = diff
+        min = RMSE
         min_poly = poly
-    print('diff: ' + str(diff), end = '\n')
-    # print('min_poly: '+str(min_poly))
-    # print('min: '+str(min))
+    print('RMSE: ' + str(RMSE), end = '\n')
