@@ -54,7 +54,7 @@ test_data = []
 for i in range(int(len(data) * 0.8), len(data)):
     test_data.append(data[i])
 
-min = sys.int_info.min
+min = int(sys.float_info.min)
 min_poly = 0
 for poly in range(0, 15):
     poly += 1
