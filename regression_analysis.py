@@ -77,4 +77,4 @@ for poly in range(0, 15):
     if RMSE < min:
         min = RMSE
         min_poly = poly
-    print('RMSE: ' + str(RMSE), end = '\n')
+    print('RMSE: ' + str(int(RMSE)), end = '\n')
