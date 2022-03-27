@@ -1,5 +1,4 @@
 import sys
-
 import numpy as np
 
 data = [2790, 3080, 3384, 3636, 2695, 3009, 3104, 3235, 3131, 3298, 3851, 3091, 3157, 3412, 3386, 3005, 3399, 3160,
@@ -68,13 +67,13 @@ for poly in range(0, 15):
     z = np.polyfit(x, train_data, poly)
     p = np.poly1d(z)
 
-    diff = 0.0
+    RMSE = 0.0
     for x in range(633, 791):
-        diff += pow(p(x) - test_data[x - 633], 2)
+        RMSE += pow(p(x) - test_data[x - 633], 2)
 
-    diff = pow(diff, 0.5)
+    RMSE = pow(diff, 0.5)
 
-    if diff < min:
+    if RMSE < min:
         min = diff
         min_poly = poly
     print('diff: ' + str(diff), end = '\n')
