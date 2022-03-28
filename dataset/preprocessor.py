@@ -11,8 +11,9 @@ class Preprocessor:
             scaler = self.__x_scaler
         else:
             scaler = self.__y_scaler
-        scaler.fit(data)
-        return scaler.transform(data)
+        tmp = data.reshape(-1, 1)
+        scaler.fit(tmp)
+        return scaler.transform(tmp).reshape(data.shape)
 
     def inverse(self, data, label):
         if label == 'x':

@@ -76,14 +76,27 @@ if __name__ == '__main__':
     decoder = Decoder()
     model = Seq2Seq(encoder, decoder).to(device)
     print(model)
-    optimizer = optim.Adadelta(model.parameters(), lr=1.0, rho=0.9, eps=1e-6, weight_decay=0)
-    # optimizer = optim.Adam(model.parameters(), Hyperparameter.LEARNING_RATE, betas=(0.5, 0.999))
+    optimizer = optim.Adam(model.parameters(), Hyperparameter.LEARNING_RATE, betas=(0.5, 0.999))
     criterion = RMSELoss()
+    min_loss = 1
+    trigger_count = 0
     for e in range(Hyperparameter.EPOCH):
         train_loss = train(model, train_loader, optimizer, criterion)
+        y, y_pred, val_loss = evaluate(model, val_loader, criterion)
+
+        if val_loss > min_loss:
+            trigger_count += 1
+        else:
+            min_loss = val_loss
+
+        print('\nEpoch:', e)
         print('train loss:', train_loss)
-        y, y_pred, eval_loss = evaluate(model, val_loader, criterion)
-        print('eva loss:', eval_loss)
-        print('actual loss:', eval_loss * 5474)
-        print(y)
-        print(y_pred)
+        print('eva loss:', val_loss)
+        print('actual loss:', val_loss * 5474)
+        print('trigger:', trigger_count)
+        # print(y)
+        # print(y_pred)
+
+        if trigger_count >= Hyperparameter.PATIENCE:
+            break
+    torch.save(model, 'model.pt')

@@ -20,11 +20,12 @@ class Hyperparameter:
     LEARNING_RATE = 0.0002
     BATCH_SIZE = 16
     EPOCH = 1000
+    PATIENCE = 5
 
-    INPUT_SEQ_LEN = 15
+    INPUT_SEQ_LEN = 30
     OUTPUT_SEQ_LEN = 15
 
-    FEATURE_DIM = 69
+    FEATURE_DIM = 1
     EMBEDDING_DIM = 256
     HIDDEN_DIM = 512
     OUTPUT_DIM = 1
