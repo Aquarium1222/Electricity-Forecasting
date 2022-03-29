@@ -24,7 +24,7 @@ class Hyperparameter:
     PATIENCE = 10
 
     INPUT_SEQ_LEN = 30
-    OUTPUT_SEQ_LEN = 7
+    OUTPUT_SEQ_LEN = 1
 
     FEATURE_DIM = 1
     EMBEDDING_DIM = 256

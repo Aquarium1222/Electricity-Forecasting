@@ -5,6 +5,7 @@ import numpy as np
 from sklearn.metrics import mean_squared_error
 from datetime import datetime, timedelta
 import os
+import time
 
 from config import *
 from dataset.wrapped_dataloader import *
@@ -71,7 +72,10 @@ if __name__ == '__main__':
 
     # # The following part is an example.
     # # You can modify it at will.
-    os.remove(Constant.RESERVE_MARGIN_TEST)
+    if os.path.exists(Constant.RESERVE_MARGIN_TEST):
+        os.remove(Constant.RESERVE_MARGIN_TEST)
+    if os.path.exists(Constant.OUTPUT_FILE):
+        os.remove(Constant.OUTPUT_FILE)
 
     device = 'cpu'
     if torch.cuda.is_available():
@@ -104,7 +108,9 @@ if __name__ == '__main__':
         # print(y)
         # print(y_pred)
 
-        if trigger_count >= Hyperparameter.PATIENCE:
+        # if trigger_count >= Hyperparameter.PATIENCE:
+        #     break
+        if val_loss * 5474 < 740:
             break
     torch.save(model, 'model.pt')
 
@@ -123,6 +129,8 @@ if __name__ == '__main__':
     ele.find_element(By.CLASS_NAME, 'el-button--primary').click()
     browser.close()
 
+    time.sleep(5)
+
     df1 = pd.read_csv(Constant.RESERVE_MARGIN)
     df2 = pd.read_csv(Constant.RESERVE_MARGIN_TEST)
     df = pd.concat([df1, df2], axis=0).drop_duplicates().reset_index(drop=True)
@@ -132,6 +140,8 @@ if __name__ == '__main__':
     result = []
     hp = Hyperparameter
     for i in range(test_index, len(x)):
+        if i - test_index > 13:
+            break
         data.append(x[i - hp.INPUT_SEQ_LEN + 1:i + 1])
     data = torch.from_numpy(np.array(data))
     output = pd.DataFrame({'date', 'operating_reserve(MW)'})
@@ -143,7 +153,7 @@ if __name__ == '__main__':
         for each_r in preprocessor.inverse(r[:, 0, :].cpu().detach().numpy(), 'y'):
             output.append([
                 pred_date.strftime('%Y%m%d'),
-                each_r[0]
+                int(each_r[0])
             ])
             pred_date = pred_date + timedelta(days=1)
 
