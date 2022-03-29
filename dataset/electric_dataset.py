@@ -10,9 +10,7 @@ class ElectricDataset(data.Dataset):
     def __init__(self, preprocessor):
         const = config.Constant
         hp = config.Hyperparameter
-        df1 = pd.read_csv(const.RESERVE_MARGIN[0])
-        df2 = pd.read_csv(const.RESERVE_MARGIN[1])
-        df = pd.concat([df1, df2], axis=0).drop_duplicates().drop(columns=['日期', '備轉容量率(%)'])
+        df = pd.read_csv(const.RESERVE_MARGIN).drop(columns=['日期', '備轉容量率(%)'])
         y = preprocessor.preprocessing(np.expand_dims(df['備轉容量(萬瓩)'].to_numpy(), axis=1) * 10, 'y')
         x = preprocessor.preprocessing(np.expand_dims(df['備轉容量(萬瓩)'].to_numpy(), axis=1) * 10, 'x')
         # x = preprocessor.preprocessing(df.to_numpy(), 'x')

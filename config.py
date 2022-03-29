@@ -1,6 +1,6 @@
 class Constant:
-    SUPPLY_DEMAND_ELECTRICITY_FILES = ['./data/台灣電力公司_過去電力供需資訊_1.csv', './data/台灣電力公司_過去電力供需資訊_2.csv']
-    RESERVE_MARGIN = ['./data/每日尖峰備轉容量率_1.csv', './data/每日尖峰備轉容量率_2.csv']
+    RESERVE_MARGIN = './data/每日尖峰備轉容量率.csv'
+    RESERVE_MARGIN_TEST = './data/本年度每日尖峰備轉容量率.csv'
     OUTPUT_FILE = './submission.csv'
     TRAIN_SIZE = 0.8
     # Format
@@ -14,16 +14,17 @@ class Constant:
     # 20210328, 2333
     # 20210329, 1800
     LOG_INTERVAL = 10
+    START_DATE = '2022/03/27'
 
 
 class Hyperparameter:
     LEARNING_RATE = 0.0002
     BATCH_SIZE = 16
-    EPOCH = 1000
-    PATIENCE = 5
+    EPOCH = 100
+    PATIENCE = 10
 
     INPUT_SEQ_LEN = 30
-    OUTPUT_SEQ_LEN = 15
+    OUTPUT_SEQ_LEN = 7
 
     FEATURE_DIM = 1
     EMBEDDING_DIM = 256
