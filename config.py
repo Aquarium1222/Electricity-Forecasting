@@ -14,7 +14,7 @@ class Constant:
     # 20210328, 2333
     # 20210329, 1800
     LOG_INTERVAL = 10
-    START_DATE = '2022/03/27'
+    START_DATE = '2022/03/29'
 
 
 class Hyperparameter:
