@@ -4,6 +4,7 @@ import torch.optim as optim
 import numpy as np
 from sklearn.metrics import mean_squared_error
 from datetime import datetime, timedelta
+import os
 
 from config import *
 from dataset.wrapped_dataloader import *
@@ -70,6 +71,8 @@ if __name__ == '__main__':
 
     # # The following part is an example.
     # # You can modify it at will.
+    os.remove(Constant.RESERVE_MARGIN_TEST)
+
     device = 'cpu'
     if torch.cuda.is_available():
         device = 'cuda'
@@ -107,7 +110,6 @@ if __name__ == '__main__':
 
     from selenium import webdriver
     from selenium.webdriver.common.by import By
-    import os
     import pandas as pd
 
     url = 'https://data.gov.tw/dataset/25850'
