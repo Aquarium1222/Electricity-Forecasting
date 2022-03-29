@@ -54,18 +54,20 @@ def evaluate(model, dataloader, criterion):
 # You can write code above the if-main block.
 if __name__ == '__main__':
     # You should not modify this part, but additional arguments are allowed.
-    # import argparse
-    #
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument('--training',
-    #                     default='training_data.csv',
-    #                     help='input training data file name')
-    #
-    # parser.add_argument('--output',
-    #                     default='submission.csv',
-    #                     help='output file name')
-    # args = parser.parse_args()
-    #
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--training',
+                        default='training_data.csv',
+                        help='input training data file name')
+
+    parser.add_argument('--output',
+                        default='submission.csv',
+                        help='output file name')
+    args = parser.parse_args()
+    Constant.RESERVE_MARGIN = args.training
+    Constant.OUTPUT_FILE = args.output
+
     # # The following part is an example.
     # # You can modify it at will.
     device = 'cpu'
@@ -135,9 +137,7 @@ if __name__ == '__main__':
     pred_date = datetime.strptime(Constant.START_DATE, '%Y/%m/%d') + timedelta(days=1)
     for each in data:
         each = each.unsqueeze(2).to(torch.float32).to(device)
-        print('each', each)
         r = model(each, torch.zeros((Hyperparameter.OUTPUT_SEQ_LEN, 1, 1)), teacher_forcing_ratio=-1)
-        print(r.shape)
         for each_r in preprocessor.inverse(r[:, 0, :].cpu().detach().numpy(), 'y'):
             output.append([
                 pred_date.strftime('%Y%m%d'),

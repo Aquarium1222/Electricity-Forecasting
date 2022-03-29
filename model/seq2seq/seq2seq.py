@@ -32,7 +32,6 @@ class Seq2Seq(nn.Module):
         decoder_input = self.linear(x[-1, :, :].unsqueeze(0))
         outputs = torch.zeros(y.shape)
         for i in range(self.output_len):
-            print('di', decoder_input)
             output, h, c = self.decoder(decoder_input, h, c)
             outputs[i] = output
             is_teacher_forcing = random.random() < teacher_forcing_ratio
