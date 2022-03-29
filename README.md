@@ -5,6 +5,7 @@
 ## Method 1: regression analysis
 
 ### Data analysis
+* 資料： [台灣電力公司_過去電力供需資訊_1.csv](https://github.com/Aquarium1222/Electricity-Forecasting/blob/main/data/%E5%8F%B0%E7%81%A3%E9%9B%BB%E5%8A%9B%E5%85%AC%E5%8F%B8_%E9%81%8E%E5%8E%BB%E9%9B%BB%E5%8A%9B%E4%BE%9B%E9%9C%80%E8%B3%87%E8%A8%8A_1.csv) 與 [台灣電力公司_過去電力供需資訊_2.csv](https://github.com/Aquarium1222/Electricity-Forecasting/blob/main/data/%E5%8F%B0%E7%81%A3%E9%9B%BB%E5%8A%9B%E5%85%AC%E5%8F%B8_%E9%81%8E%E5%8E%BB%E9%9B%BB%E5%8A%9B%E4%BE%9B%E9%9C%80%E8%B3%87%E8%A8%8A_2.csv) ，共兩份 csv 檔案
 * 將 2020/01/01 至 2022/02/28 的資料以 8:2 的比例切分為訓練集與測試集
 * 共計有 790 天，所以取前 632 天作為訓練集、最後 158 天為測試集
 
@@ -87,7 +88,7 @@ result: 0.266 x + 3608
 
 ### Data analysis 2: 台灣電力公司_過去電力供需資訊
 
-* 資料： [每日尖峰備轉容量率_1.csv](https://github.com/Aquarium1222/Electricity-Forecasting/blob/main/data/%E6%AF%8F%E6%97%A5%E5%B0%96%E5%B3%B0%E5%82%99%E8%BD%89%E5%AE%B9%E9%87%8F%E7%8E%87_1.csv) 與 [每日尖峰備轉容量率_2.csv](https://github.com/Aquarium1222/Electricity-Forecasting/blob/main/data/%E6%AF%8F%E6%97%A5%E5%B0%96%E5%B3%B0%E5%82%99%E8%BD%89%E5%AE%B9%E9%87%8F%E7%8E%87_2.csv) ，共兩份 csv 檔案
+* 資料： [每日尖峰備轉容量率.csv](https://github.com/Aquarium1222/Electricity-Forecasting/blob/main/data/%E6%AF%8F%E6%97%A5%E5%B0%96%E5%B3%B0%E5%82%99%E8%BD%89%E5%AE%B9%E9%87%8F%E7%8E%87.csv) ，共一份 csv 檔案
   * 包含 2019/01/01 - 2022/03/29，共 1180 天之資料
   * 每筆資料包含下列 2 種資訊
     *  備轉容量(萬瓩)
