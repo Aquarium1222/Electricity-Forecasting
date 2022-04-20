@@ -2,9 +2,11 @@
 
 #### [DSAI_HW1-Electricity_Forecasting](https://docs.google.com/document/d/11G_SqvtPEQD4cqCEfBCpBS4L8BeiVIwlNoXYy7oSdKM/edit)
 ---
-## Method 1: regression analysis
 
 python app.py --training ./data/每日尖峰備轉容量率.csv
+
+---
+## Method 1: regression analysis
 
 ### Data analysis
 * 資料： [台灣電力公司_過去電力供需資訊_1.csv](https://github.com/Aquarium1222/Electricity-Forecasting/blob/main/data/%E5%8F%B0%E7%81%A3%E9%9B%BB%E5%8A%9B%E5%85%AC%E5%8F%B8_%E9%81%8E%E5%8E%BB%E9%9B%BB%E5%8A%9B%E4%BE%9B%E9%9C%80%E8%B3%87%E8%A8%8A_1.csv) 與 [台灣電力公司_過去電力供需資訊_2.csv](https://github.com/Aquarium1222/Electricity-Forecasting/blob/main/data/%E5%8F%B0%E7%81%A3%E9%9B%BB%E5%8A%9B%E5%85%AC%E5%8F%B8_%E9%81%8E%E5%8E%BB%E9%9B%BB%E5%8A%9B%E4%BE%9B%E9%9C%80%E8%B3%87%E8%A8%8A_2.csv) ，共兩份 csv 檔案
@@ -103,9 +105,3 @@ result: 0.266 x + 3608
 
 ### Data pre-processing
 * 依據上述 Data analysis 的結果，得知只需使用歷史備轉容量來預測未來備轉容量即可
-
-### Feature selection
-
-
-### Model training
-
